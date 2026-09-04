@@ -52,4 +52,6 @@ The forecasting component uses historical event-conditioned performance to estim
 
 ## Disclaimer
 
+### Check with a live demo
+https://stock-leader-follower-intelligence-zsrhrbcal5ycuehv344jht.streamlit.app/ 
 This project is intended for educational, research, and investment-analysis purposes. Historical relationships and statistical patterns do not guarantee future performance. Forecasts and probabilities should not be interpreted as financial advice or guaranteed investment outcomes.
