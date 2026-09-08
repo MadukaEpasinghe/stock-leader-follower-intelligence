@@ -2,7 +2,8 @@ streamlit
 yfinance
 pandas
 numpy
-scipy
 plotly
 requests
 lxml
+html5lib
+beautifulsoup4
