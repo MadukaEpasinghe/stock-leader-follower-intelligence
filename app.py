@@ -1405,6 +1405,9 @@ minimum_event_return_pct = st.sidebar.slider(
     format="%d%%",
 )
 
+tolerance = tolerance_pct / 100
+minimum_event_return = minimum_event_return_pct / 100
+
     min_events = st.sidebar.slider(
         "Minimum historical events",
         min_value=2,
