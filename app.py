@@ -1382,28 +1382,28 @@ def main():
         "---"
     )
 
-    tolerance = st.sidebar.slider(
-        "Historical event tolerance",
-        min_value=0.02,
-        max_value=0.15,
-        value=0.05,
-        step=0.01,
-        format="%.0f%%",
-        help=(
-            "Historical leader events are selected when the "
-            "21-trading-day return falls within this distance "
-            "of the current leader's momentum."
-        ),
-    )
+ tolerance_pct = st.sidebar.slider(
+    "Historical event tolerance",
+    min_value=2,
+    max_value=15,
+    value=5,
+    step=1,
+    format="%d%%",
+    help=(
+        "Historical leader events are selected when the "
+        "21-trading-day return falls within this percentage-point "
+        "range of the current leader's momentum."
+    ),
+)
 
-    minimum_event_return = st.sidebar.slider(
-        "Minimum historical leader return",
-        min_value=0.02,
-        max_value=0.20,
-        value=0.05,
-        step=0.01,
-        format="%.0f%%",
-    )
+minimum_event_return_pct = st.sidebar.slider(
+    "Minimum historical leader return",
+    min_value=2,
+    max_value=20,
+    value=5,
+    step=1,
+    format="%d%%",
+)
 
     min_events = st.sidebar.slider(
         "Minimum historical events",
