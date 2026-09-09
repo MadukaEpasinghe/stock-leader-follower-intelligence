@@ -1378,35 +1378,33 @@ def main():
         "GICS Sector",
     ].iloc[0]
 
-    st.sidebar.markdown(
-        "---"
+    st.sidebar.markdown("---")
+
+    tolerance_pct = st.sidebar.slider(
+        "Historical momentum tolerance",
+        min_value=2,
+        max_value=15,
+        value=5,
+        step=1,
+        format="%d%%",
+        help=(
+            "Defines how close a historical 21-day leader return "
+            "must be to the current leader momentum signal."
+        ),
     )
 
- tolerance_pct = st.sidebar.slider(
-    "Historical event tolerance",
-    min_value=2,
-    max_value=15,
-    value=5,
-    step=1,
-    format="%d%%",
-    help=(
-        "Historical leader events are selected when the "
-        "21-trading-day return falls within this percentage-point "
-        "range of the current leader's momentum."
-    ),
-)
+    minimum_event_return_pct = st.sidebar.slider(
+        "Minimum historical momentum",
+        min_value=2,
+        max_value=20,
+        value=5,
+        step=1,
+        format="%d%%",
+    )
 
-minimum_event_return_pct = st.sidebar.slider(
-    "Minimum historical leader return",
-    min_value=2,
-    max_value=20,
-    value=5,
-    step=1,
-    format="%d%%",
-)
-
-tolerance = tolerance_pct / 100
-minimum_event_return = minimum_event_return_pct / 100
+    # Convert percentage values to decimals for the calculations
+    tolerance = tolerance_pct / 100
+    minimum_event_return = minimum_event_return_pct / 100
 
     min_events = st.sidebar.slider(
         "Minimum historical events",
@@ -1438,13 +1436,6 @@ minimum_event_return = minimum_event_return_pct / 100
     st.sidebar.caption(
         "Data source: Yahoo Finance / S&P 500 constituent data"
     )
-
-    if st.sidebar.button(
-        "Clear cached data"
-    ):
-        st.cache_data.clear()
-        st.rerun()
-
     # --------------------------------------------------------
     # DOWNLOAD PRICES
     # --------------------------------------------------------
