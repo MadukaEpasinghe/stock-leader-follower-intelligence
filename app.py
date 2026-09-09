@@ -2455,21 +2455,23 @@ def main():
 
     if not top_followers.empty:
 
-        selected_follower = (
-            st.selectbox(
-                "Select a follower for detailed analysis",
-                top_followers[
-                    "ticker"
-                ].tolist(),
-                format_func=lambda ticker: (
-                    f"{ticker} — "
-                    f"{top_followers.loc["
-                        top_followers["ticker"]
-                        == ticker,
-                        "Security"
-                    ].iloc[0]}"
-                ),
+        follower_options = top_followers[
+            "ticker"
+        ].tolist()
+
+        follower_names = dict(
+            zip(
+                top_followers["ticker"],
+                top_followers["Security"],
             )
+        )
+
+        selected_follower = st.selectbox(
+            "Select a follower for detailed analysis",
+            follower_options,
+            format_func=lambda ticker: (
+                f"{ticker} — {follower_names[ticker]}"
+            ),
         )
 
         follower_row = (
